@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting...</title>
+    <script>
+      const hash = window.location.hash;
+      const token = hash.split('access_token=')[1]?.split('&')[0];
+      if (token) {
+        window.location.href = `yummy://resetPassword?accessToken=${token}`;
+      } else {
+        document.body.innerText = 'Token bulunamadı.';
+      }
+    </script>
+  </head>
+  <body>
+    <p>Yönlendiriliyor...</p>
+  </body>
+</html>
