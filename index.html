@@ -1,38 +1,20 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8" />
-  <title>Yönlendiriliyor...</title>
-</head>
-<body>
-  <p id="status">Yönlendiriliyor...</p>
-  <script>
-    const hash = window.location.hash;
-    const params = new URLSearchParams(hash.slice(1));
+<a id="deeplink" href="">Uygulamaya git</a>
+<script>
+  const hash = window.location.hash;
+  const params = new URLSearchParams(hash.slice(1));
+  const accessToken = params.get('access_token');
+  const statusEl = document.getElementById('status');
+  const linkEl = document.getElementById('deeplink');
 
-    const accessToken = params.get('access_token');
-    const error = params.get('error');
-    const errorCode = params.get('error_code');
-    const errorDesc = params.get('error_description');
+  if (accessToken) {
+    const deepLink = `yummy://resetPassword?accessToken=${accessToken}`;
+    statusEl.textContent = 'Yönlendiriliyorsunuz...';
+    linkEl.href = deepLink;
+    setTimeout(() => {
+      window.location.href = deepLink;
+    }, 500);
+  } else {
+    statusEl.textContent = 'Bağlantı geçersiz veya süresi dolmuş.';
+  }
+</script>
 
-    const statusEl = document.getElementById('status');
-
-    if (error) {
-      console.log("🚨 Hata oluştu:");
-      console.log("error:", error);
-      console.log("error_code:", errorCode);
-      console.log("error_description:", errorDesc);
-      statusEl.textContent = `Hata: ${decodeURIComponent(errorDesc || errorCode || error)}`;
-    } else if (accessToken) {
-      console.log("✅ access_token bulundu:", accessToken);
-      const redirectUrl = `yummy://resetPassword?accessToken=${accessToken}`;
-      console.log("📦 Uygulamaya yönlendiriliyor:", redirectUrl);
-      statusEl.textContent = 'Yönlendiriliyorsunuz...';
-      window.location.href = redirectUrl;
-    } else {
-      console.log("❌ access_token yok.");
-      statusEl.textContent = 'Geçersiz bağlantı ya da süre dolmuş.';
-    }
-  </script>
-</body>
-</html>
