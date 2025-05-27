@@ -1,20 +1,9 @@
-<a id="deeplink" href="">Uygulamaya git</a>
 <script>
-  const hash = window.location.hash;
-  const params = new URLSearchParams(hash.slice(1));
-  const accessToken = params.get('access_token');
-  const statusEl = document.getElementById('status');
-  const linkEl = document.getElementById('deeplink');
-
-  if (accessToken) {
-    const deepLink = `yummy://resetPassword?accessToken=${accessToken}`;
-    statusEl.textContent = 'Yönlendiriliyorsunuz...';
-    linkEl.href = deepLink;
-    setTimeout(() => {
-      window.location.href = deepLink;
-    }, 500);
-  } else {
-    statusEl.textContent = 'Bağlantı geçersiz veya süresi dolmuş.';
-  }
+  const p = new URLSearchParams(location.search);
+  const placeid = p.get('placeid');
+  const tableNo = p.get('tableNo');
+  const deep = `yummy://open?placeid=${placeid}&tableNo=${tableNo}`;
+  const fallback = 'https://play.google.com/store/apps/details?id=com.mycompany.yummy';
+  window.location.href = deep;
+  setTimeout(() => window.location.href = fallback, 2000);
 </script>
-
