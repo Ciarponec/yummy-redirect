@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yummy - Gizlilik Politikası</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 0 16px; line-height: 1.6; }
+    h1 { text-align: center; color: #333; }
+    h2 { color: #555; }
+  </style>
+</head>
+<body>
+  <h1>Gizlilik Politikası – Yummy</h1>
+
+  <p>Yummy ("biz", "uygulama", "platform") olarak gizliliğinizi önemsiyoruz. Bu Gizlilik Politikası, mobil uygulamamızı kullanırken hangi kişisel verilerinizi topladığımızı, nasıl kullandığımızı ve nasıl koruduğumuzu açıklar.</p>
+
+  <h2>1. Topladığımız Veriler</h2>
+  <ul>
+    <li><strong>Hesap Bilgileri:</strong> E-posta adresi, ad, parola (güvenli şekilde Supabase ile saklanır).</li>
+    <li><strong>Konum Verileri:</strong> Teslimat ve konum tabanlı hizmetler için (sadece izin verdiğinizde).</li>
+    <li><strong>Sipariş Verileri:</strong> Sipariş detayları, ödeme durumu, tercihler.</li>
+    <li><strong>Cihaz Bilgisi:</strong> Tanımlayıcı olmayan teknik bilgiler (hata ayıklama ve geliştirme amaçlı).</li>
+  </ul>
+
+  <h2>2. Verilerin Kullanımı</h2>
+  <p>Verilerinizi şu amaçlarla kullanıyoruz:</p>
+  <ul>
+    <li>Giriş ve hesap yönetimi sağlamak.</li>
+    <li>Sipariş işlemlerini gerçekleştirmek.</li>
+    <li>Ödeme işlemlerini yürütmek (PayTR altyapısı ile).</li>
+    <li>Kuryelere teslimat bilgisi sağlamak.</li>
+    <li>Destek ve hizmet kalitesini artırmak.</li>
+  </ul>
+
+  <h2>3. Veri Paylaşımı</h2>
+  <p>Verileriniz satılmaz. Yalnızca şu taraflarla paylaşılır:</p>
+  <ul>
+    <li>Kuryelerle (sadece teslimatla ilgili bilgiler).</li>
+    <li>PayTR ile (güvenli API aracılığıyla ödeme bilgileri).</li>
+    <li>Supabase ile (veri barındırma ve kimlik doğrulama hizmeti).</li>
+  </ul>
+
+  <h2>4. Veri Güvenliği</h2>
+  <p>Tüm verileriniz Supabase sunucularında güvenli şekilde saklanır. Edge Function yapıları ve HTTPS şifrelemesi ile koruma sağlanır.</p>
+
+  <h2>5. Haklarınız</h2>
+  <p>Aşağıdaki haklara sahipsiniz:</p>
+  <ul>
+    <li>Verilerinizi görüntüleme ve güncelleme.</li>
+    <li>Hesabınızı ve verilerinizi silme talebinde bulunma.</li>
+    <li>Gizlilikle ilgili her konuda bizimle iletişime geçme.</li>
+  </ul>
+
+  <h2>6. İletişim</h2>
+  <p>Gizliliğinizle ilgili sorular veya veri silme talepleriniz için:</p>
+  <ul>
+    <li><strong>E-posta:</strong> ciarponec@gmail.com</li>
+    <li><strong>Telefon:</strong> +90 536 327 5004</li>
+  </ul>
+
+  <p style="margin-top:40px;">Son güncelleme: Temmuz 2025</p>
+</body>
+</html>
