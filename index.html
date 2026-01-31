@@ -1,9 +1,35 @@
-<script>
-  const p = new URLSearchParams(location.search);
-  const placeid = p.get('placeid');
-  const tableNo = p.get('tableNo');
-  const deep = `yummy://open?placeid=${placeid}&tableNo=${tableNo}`;
-  const fallback = 'https://play.google.com/store/apps/details?id=com.mycompany.yummy';
-  window.location.href = deep;
-  setTimeout(() => window.location.href = fallback, 2000);
-</script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Yummy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get('code');
+
+      // Eğer code yoksa saçmalama
+      if (!code) {
+        document.body.innerText = 'Geçersiz QR kod';
+        throw new Error('QR code missing');
+      }
+
+      // Nihai deep link formatı
+      const deepLink = `yummy://q?code=${encodeURIComponent(code)}`;
+
+      // Şimdilik Android fallback
+      const fallback =
+        'https://play.google.com/store/apps/details?id=com.mycompany.yummy';
+
+      // App’i açmayı dene
+      window.location.href = deepLink;
+
+      // Açılmazsa store
+      setTimeout(() => {
+        window.location.href = fallback;
+      }, 1200);
+    </script>
+  </body>
+</html>
