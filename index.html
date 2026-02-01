@@ -1,15 +1,43 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yummy Redirect</title>
+</head>
+<body>
 <script>
   const p = new URLSearchParams(location.search);
   const token = p.get('token');
 
+  // ✅ Deep link (app)
   const deep = `yummy://q?token=${encodeURIComponent(token || '')}`;
-  const fallback = 'https://play.google.com/store/apps/details?id=com.mycompany.yummy';
+
+  // ✅ Fallback'ler (bunları dolduracaksın)
+  const ANDROID_PLAY_STORE = 'https://play.google.com/store/apps/details?id=com.mycompany.yummy';
+  const IOS_APP_STORE      = 'https://apps.apple.com/app/idYOUR_APP_ID'; // <- burayı sonra güncelle
+  const WEB_FALLBACK       = 'https://ciarponec.github.io/yummy-redirect/'; // istersen landing
+
+  // Platform tespiti (basit ve pratik)
+  const ua = navigator.userAgent || '';
+  const isAndroid = /Android/i.test(ua);
+  const isiOS = /iPhone|iPad|iPod/i.test(ua);
+
+  const fallback = isiOS ? IOS_APP_STORE : (isAndroid ? ANDROID_PLAY_STORE : WEB_FALLBACK);
 
   if (!token) {
-    document.body.innerText = 'Geçersiz QR';
+    document.body.innerText = 'Geçersiz QR (token yok).';
   } else {
+    // Önce app'i açmayı dene
     window.location.href = deep;
-    setTimeout(() => window.location.href = fallback, 1200);
+
+    // Sonra fallback
+    // iOS genelde daha yavaş döner; biraz daha uzun tutmak iyi.
+    const delay = isiOS ? 1600 : 1200;
+    setTimeout(() => {
+      window.location.href = fallback;
+    }, delay);
   }
 </script>
-
+</body>
+</html>
