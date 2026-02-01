@@ -1,35 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Yummy</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-  <body>
-    <script>
-      const params = new URLSearchParams(window.location.search);
-      const code = params.get('code');
+<script>
+  const p = new URLSearchParams(location.search);
+  const token = p.get('token');
 
-      // Eğer code yoksa saçmalama
-      if (!code) {
-        document.body.innerText = 'Geçersiz QR kod';
-        throw new Error('QR code missing');
-      }
+  const deep = `yummy://q?token=${encodeURIComponent(token || '')}`;
+  const fallback = 'https://play.google.com/store/apps/details?id=com.mycompany.yummy';
 
-      // Nihai deep link formatı
-      const deepLink = `yummy://q?code=${encodeURIComponent(code)}`;
+  if (!token) {
+    document.body.innerText = 'Geçersiz QR';
+  } else {
+    window.location.href = deep;
+    setTimeout(() => window.location.href = fallback, 1200);
+  }
+</script>
 
-      // Şimdilik Android fallback
-      const fallback =
-        'https://play.google.com/store/apps/details?id=com.mycompany.yummy';
-
-      // App’i açmayı dene
-      window.location.href = deepLink;
-
-      // Açılmazsa store
-      setTimeout(() => {
-        window.location.href = fallback;
-      }, 1200);
-    </script>
-  </body>
-</html>
